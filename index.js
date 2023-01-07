@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const port = process.env.PORT || 5000
 const app = express();
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
@@ -24,11 +25,9 @@ app.use("/",getTask)
 
 
 
-dotenv.config();
-//connect to DB
 mongoose.connect(process.env.DATABASE_URL,{ useNewUrlParser: true, useUnifiedTopology: true }, () => {
     console.log('connected to DB')
 })
 
 
-app.listen(5000, () => console.log('Server running......'));
+app.listen(port, () => console.log(`Server running......${port}`));
