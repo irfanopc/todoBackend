@@ -21,7 +21,7 @@ router.post("/signup", async (req, res) => {
     user = await User.create({email, password});
     res.status(200).json({user});
   } catch (error) {
-    console.log(error);
+    return res.status(400).json({ message: "user name should be a valid email id" });
   }
 });
 
